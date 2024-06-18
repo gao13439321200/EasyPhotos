@@ -220,9 +220,11 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
             return new String[]{Manifest.permission.CAMERA,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE};
         } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                return new String[]{Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_AUDIO, Manifest.permission.READ_MEDIA_VIDEO};
+            }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                return new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE};
+                return new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
             }
             return new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
         }
