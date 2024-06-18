@@ -598,7 +598,7 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
         }).start();
     }
 
-    private void onCameraResult() {
+    private void onCameraResult() throws IOException {
         LoadingDialog loading = LoadingDialog.get(this);
         new Thread(new Runnable() {
             @Override
