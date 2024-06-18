@@ -1,6 +1,9 @@
 package com.huantansheng.easyphotos.ui;
 
 import android.Manifest;
+import android.os.Build;
+
+import androidx.core.content.PermissionChecker;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
