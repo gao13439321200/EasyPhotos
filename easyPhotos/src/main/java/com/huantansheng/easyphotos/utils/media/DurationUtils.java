@@ -3,6 +3,8 @@ package com.huantansheng.easyphotos.utils.media;
 import android.media.MediaMetadataRetriever;
 import android.text.format.DateUtils;
 
+import java.io.IOException;
+
 /**
  * DurationUtils
  * Create By lishilin On 2019/3/25
@@ -15,7 +17,7 @@ public class DurationUtils {
      * @param path path
      * @return duration
      */
-    public static long getDuration(String path) {
+    public static long getDuration(String path) throws IOException {
         MediaMetadataRetriever mmr = null;
         try {
             mmr = new MediaMetadataRetriever();
