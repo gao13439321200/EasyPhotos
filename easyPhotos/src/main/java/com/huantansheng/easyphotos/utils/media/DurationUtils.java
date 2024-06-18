@@ -17,18 +17,20 @@ public class DurationUtils {
      * @param path path
      * @return duration
      */
-    public static long getDuration(String path) throws IOException {
+    public static long getDuration(String path) {
         MediaMetadataRetriever mmr = null;
         try {
             mmr = new MediaMetadataRetriever();
             mmr.setDataSource(path);
-            return Long.parseLong(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+            Long a = Long.parseLong(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+            mmr.release();
+            return a;
         } catch (Exception e) {
 //            e.printStackTrace();
         } finally {
-            if (mmr != null) {
-                mmr.release();
-            }
+            // if (mmr != null) {
+            //     mmr.release();
+            // }
         }
         return 0;
     }
