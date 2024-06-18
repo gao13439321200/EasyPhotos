@@ -64,10 +64,16 @@ public class AlbumModel {
 
     public void query(Context context, final CallBack callBack) {
         final Context appCxt = context.getApplicationContext();
-        if (PermissionChecker.checkSelfPermission(context,
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PermissionChecker.PERMISSION_GRANTED) {
-            if (null != callBack) callBack.onAlbumWorkedCallBack();
-            return;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            if (PermissionChecker.checkSelfPermission(context, Manifest.permission.READ_MEDIA_IMAGES) != PermissionChecker.PERMISSION_GRANTED) {
+                if (null != callBack) callBack.onAlbumWorkedCallBack();
+                return;
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            if (PermissionChecker.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PermissionChecker.PERMISSION_GRANTED) {
+                if (null != callBack) callBack.onAlbumWorkedCallBack();
+                return;
+            }
         }
         canRun = true;
         new Thread(new Runnable() {
